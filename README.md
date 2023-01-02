@@ -1,1 +1,1 @@
-# sql_general_hospital_date
+Manipulating hopsital sample data using SQL
