@@ -15,5 +15,25 @@ FROM information_schema.tables
 SELECT *
 FROM information_schema.columns
 ````
+## SELECT DISTINCT 
+Select unique records from the **state** column
+````sql
+SELECT DISTINCT state
+FROM general_hospital.patients
+ORDER BY state
+````
+![distinct on column](https://user-images.githubusercontent.com/121811651/211205030-68548fa8-2a7d-4786-96fe-eb542b214b38.png)
+
+### SELECT DISTINCT COUNT
+Counting the number of unique records and renaming the output column
+````sql
+SELECT DISTINCT COUNT(city) AS distinct_city_count
+FROM general_hospital.patients
+````
+![SELECT DISTINCT COUNT](https://user-images.githubusercontent.com/121811651/211205177-62028e8e-3c3d-408e-82a1-bd57beaf0fcf.png)
+
+
+
+
 
 
