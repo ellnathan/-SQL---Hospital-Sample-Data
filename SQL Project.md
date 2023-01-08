@@ -50,6 +50,24 @@ WHERE zip_cd LIKE '%111%'
 AND city = 'Philadelphia'
 AND address_number BETWEEN 0 and 1000
 ````
+#### SUBQUERY Operator
+Retrieving the count for records based on filters applied in the nested query, and outer query
+````sql
+SELECT COUNT (*) AS patient_count
+FROM (
+	SELECT * 
+	FROM general_hospital.patients 
+	WHERE date_of_birth >= '1995-01-01' 
+	ORDER BY master_patient_id
+	) p 
+WHERE p.primary_language != 'English' 
+````
+![Screenshot 2022-12-27 000100](https://user-images.githubusercontent.com/121811651/211206479-954e6ae4-0f54-4064-9bdc-984b417ea5d0.png)
+
+
+
+
+
 
 
 
