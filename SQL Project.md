@@ -82,6 +82,24 @@ WHERE county NOT IN ('Los Angeles', 'Dayton', 'Lafayette', 'Columbus')
 ````
 ![NOT IN](https://user-images.githubusercontent.com/121811651/211208716-b9c84861-fb5e-488d-acc7-f81dccaccf6a.png)
 
+#### CTE 
+Creating temporary tables and combining both into one output table 
+````sql
+WITH tb1 AS (
+		SELECT resource_name, resource_type, ROUND (resource_cost, 2) AS rounded_number
+		FROM general_hospital.surgical_costs
+		WHERE lower(resource_name) = 'spec100'),
+tb2 AS (
+    		SELECT resource_name, resource_type, ROUND (resource_cost, 2) AS rounded_number
+		FROM general_hospital.surgical_costs
+		WHERE lower(resource_name) = 'paracetamol')
+			
+SELECT * FROM tb1
+UNION 
+SELECT * from tb2
+ORDER BY rounded_number 
+````
+![UNION  And not UNION ALL](https://user-images.githubusercontent.com/121811651/211220814-c63845e0-ab20-463f-a145-f1d733cbe6b0.png)
 
 
 
