@@ -141,6 +141,19 @@ WHERE lower(city) = 'bristol'
 ![Screenshot 2022-12-27 233250](https://user-images.githubusercontent.com/121811651/211221102-b93113f6-2aa4-4be6-9fa4-329362ae6672.png)
 
 ##### CTE (Common Table Expression) - Additional Example
+JOINs
+````sql
+SELECT * 
+FROM general_hospital.surgical_encounters se
+JOIN general_hospital.patients pa
+ON se.master_patient_id = pa.master_patient_id
+WHERE surgical_admission_date 
+BETWEEN '2016-11-01' AND '2016-11-30'
+AND date_of_birth >= '1990-01-01'
+````
+![Screenshot 2022-12-27 154937](https://user-images.githubusercontent.com/121811651/211221914-41f60449-5728-42c2-831c-93a29b9088f6.png)
+
+##### CTE (Common Table Expression) - Additional Example
 CTE and JOINs
 ````sql
 WITH tb1 AS (
@@ -156,19 +169,6 @@ WHERE total_cost_rounded >=1000
 AND total_profit_rounded >= 1000
 ````
 ![Screenshot 2022-12-27 154937](https://user-images.githubusercontent.com/121811651/211221810-b1d81420-70b4-414c-9e11-1aef20aeb604.png)
-
-##### CTE (Common Table Expression) - Additional Example
-JOINs
-````sql
-SELECT * 
-FROM general_hospital.surgical_encounters se
-JOIN general_hospital.patients pa
-ON se.master_patient_id = pa.master_patient_id
-WHERE surgical_admission_date 
-BETWEEN '2016-11-01' AND '2016-11-30'
-AND date_of_birth >= '1990-01-01'
-````
-![Screenshot 2022-12-27 154937](https://user-images.githubusercontent.com/121811651/211221914-41f60449-5728-42c2-831c-93a29b9088f6.png)
 
 #### JOINs
 Inner joins to pull data from different tables
