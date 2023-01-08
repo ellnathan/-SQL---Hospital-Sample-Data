@@ -82,7 +82,7 @@ WHERE county NOT IN ('Los Angeles', 'Dayton', 'Lafayette', 'Columbus')
 ````
 ![NOT IN](https://user-images.githubusercontent.com/121811651/211208716-b9c84861-fb5e-488d-acc7-f81dccaccf6a.png)
 
-#### CTE 
+#### CTE (Common Table Expression)
 Creating temporary tables and combining both into one output table 
 ````sql
 WITH tb1 AS (
@@ -101,13 +101,42 @@ ORDER BY rounded_number
 ````
 ![UNION  And not UNION ALL](https://user-images.githubusercontent.com/121811651/211220814-c63845e0-ab20-463f-a145-f1d733cbe6b0.png)
 
+##### CTE (Common Table Expression) - Additional Example
+Creating 2 temporary tables, joins and count 
+````sql
+WITH top_countries_count AS (
+				SELECT
+				county, count (*) as num_patients
+				FROM general_hospital.patients
+				GROUP BY county
+				HAVING count(*) >1700),			
+	county_patients AS (
+				SELECT 
+				pa.master_patient_id, pa.county
+				FROM general_hospital.patients pa
+				INNER JOIN top_countries_count tc 
+				ON pa.county = tc.county)			
+SELECT 
+pa.county, count(se.surgery_id) AS num_surgeries
+FROM general_hospital.surgical_encounters se
+INNER JOIN county_patients pa 
+ON se.master_patient_id = pa.master_patient_id
+GROUP BY pa.county
+````
+![Screenshot 2022-12-28 002714](https://user-images.githubusercontent.com/121811651/211221503-788d8c1b-1d82-4908-b4e3-b4b68e27b9e2.png)
 
 
-
-
-
-
-
-
-
+##### CTE (Common Table Expression) - Additional Example
+Temporary table with filters applied
+````sql
+WITH adult_patients AS (
+					SELECT * 
+					FROM general_hospital.patients
+					WHERE date_of_birth <='2004-01-01'
+					)
+SELECT *
+FROM adult_patients
+WHERE lower(city) = 'bristol'
+````
+![Screenshot 2022-12-27 233250](https://user-images.githubusercontent.com/121811651/211221102-b93113f6-2aa4-4be6-9fa4-329362ae6672.png)
 
