@@ -64,6 +64,25 @@ WHERE p.primary_language != 'English'
 ````
 ![Screenshot 2022-12-27 000100](https://user-images.githubusercontent.com/121811651/211206479-954e6ae4-0f54-4064-9bdc-984b417ea5d0.png)
 
+#### IN Operator
+Filtering on specific records within the patients table
+````sql
+SELECT * 
+FROM general_hospital.patients
+WHERE master_patient_id in 
+(100821,100822,100823,100824,100825,100826,100827,100828,100829,100830,100831,100832,100833,100834,100835,100836)
+````
+![IN](https://user-images.githubusercontent.com/121811651/211208684-310fbaaf-e9b8-4740-b3c5-fae0331c1cde.png)
+
+##### NOT IN
+````sql
+SELECT * 
+FROM general_hospital.patients
+WHERE county NOT IN ('Los Angeles', 'Dayton', 'Lafayette', 'Columbus') 
+````
+![NOT IN](https://user-images.githubusercontent.com/121811651/211208716-b9c84861-fb5e-488d-acc7-f81dccaccf6a.png)
+
+
 
 
 
