@@ -1,10 +1,10 @@
 # Table of Content
 
-
 ### Entity Relationship Diagram (ERD)
 The ERD, also known as Entity Relationship Diagram, provides a holistic visual representation of the table structure and relationships, along with the different data types for columns. Before working on a set of data, it can be a useful diagram to view to provide a better understand of where the location of different columns, and in which tables they reside in.
-![ERD](https://user-images.githubusercontent.com/121811651/211201186-68c02ff0-7b6f-445e-80e5-d97f58bbd79b.png)
 
+![ERD](https://user-images.githubusercontent.com/121811651/211201186-68c02ff0-7b6f-445e-80e5-d97f58bbd79b.png)
+___________________
 ### Information Schema
 Like the ERD, the information schema provides metadata about the databases but in the format of a table.  
 
@@ -18,7 +18,9 @@ FROM information_schema.tables
 SELECT *
 FROM information_schema.columns
 ````
+___________________
 ### SELECT DISTINCT 
+The DISTINCT statement returns unique records. In this query, the distinct operator filters on the **state** column and will eliminate any duplicate values in the list. 
 Select unique records from the **state** column
 ````sql
 SELECT DISTINCT state
@@ -26,15 +28,15 @@ FROM general_hospital.patients
 ORDER BY state
 ````
 ![distinct on column](https://user-images.githubusercontent.com/121811651/211205030-68548fa8-2a7d-4786-96fe-eb542b214b38.png)
-
+__________________
 #### SELECT DISTINCT COUNT
-Counting the number of unique records and renaming the output column
+The DISTINCT count will perform a similar action as above, but as an aggregate function is mentioned, it will count all the unique records, and output the results in a table called distinct_city_count since the AS command has been used to rename the table, but this alias will only exist for the duration of the query.
 ````sql
 SELECT DISTINCT COUNT(city) AS distinct_city_count
 FROM general_hospital.patients
 ````
 ![SELECT DISTINCT COUNT](https://user-images.githubusercontent.com/121811651/211205177-62028e8e-3c3d-408e-82a1-bd57beaf0fcf.png)
-
+__________________
 #### LIKE Operator
 Filtering data which contains specific strings and numbers
 ````sql
