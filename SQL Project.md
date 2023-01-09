@@ -2,9 +2,12 @@
 
 
 ### Entity Relationship Diagram (ERD)
+The ERD, also known as Entity Relationship Diagram, provides a holistic visual representation of the table structure and relationships, along with the different data types for columns. Before working on a set of data, it can be a useful diagram to view to provide a better understand of where the location of different columns, and in which tables they reside in.
 ![ERD](https://user-images.githubusercontent.com/121811651/211201186-68c02ff0-7b6f-445e-80e5-d97f58bbd79b.png)
 
 ### Information Schema
+Like the ERD, the information schema provides metadata about the databases but in the format of a table.  
+
 ![tables](https://user-images.githubusercontent.com/121811651/211203753-60c9bb38-7630-4a76-9d46-58bc6159fcda.png)
 ````sql
 SELECT *
