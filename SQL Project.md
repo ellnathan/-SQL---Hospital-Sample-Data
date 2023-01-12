@@ -79,7 +79,7 @@ WHERE master_patient_id in
 ![IN](https://user-images.githubusercontent.com/121811651/211208684-310fbaaf-e9b8-4740-b3c5-fae0331c1cde.png)
 
 ##### NOT IN
-NOT IN, does the opposite or the IN operator and will return all the county with the expection of those mentioned in the ````WHERE````statement.
+NOT IN, does the opposite of the IN operator and will return all the counties with the expection of those mentioned in the ````WHERE````statement.
 ````sql
 SELECT * 
 FROM general_hospital.patients
