@@ -38,23 +38,16 @@ FROM general_hospital.patients
 ![SELECT DISTINCT COUNT](https://user-images.githubusercontent.com/121811651/211205177-62028e8e-3c3d-408e-82a1-bd57beaf0fcf.png)
 __________________
 #### LIKE Operator
-Filtering data which contains specific strings and numbers
+The LIKE operator has been used to search for a specific pattern within the zip_cd column. Here in the query, the wildcard characters have been places at the beginning and ending of the numbers and this will only return zip codes which contain '111'. In additional, the output of the query returns everything from the hospital table where the city is Philadelphia, and the address number is equalled to or less than 1000. Everything else will be disregarded. Alternatively, the query can be written using BETWEEN for the address_number instead of the <=. This will also return the same output.
 ````sql
 SELECT *
 FROM general_hospital.hospitals
 WHERE zip_cd LIKE '%111%'
 AND city = 'Philadelphia'
-AND address_number <=1000
+AND address_number <=1000 -- AND address_number BETWEEN 0 and 1000
 ````
 ![like where](https://user-images.githubusercontent.com/121811651/211206075-ac8e63bd-c7c6-4311-b606-1ce7310d1e2f.png)
-##### _Alternative way to write the above query_
-````sql
-SELECT *
-FROM general_hospital.hospitals
-WHERE zip_cd LIKE '%111%'
-AND city = 'Philadelphia'
-AND address_number BETWEEN 0 and 1000
-````
+
 #### SUBQUERY Operator
 Retrieving the count for records based on filters applied in the nested query, and outer query
 ````sql
