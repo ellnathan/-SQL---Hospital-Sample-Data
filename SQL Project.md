@@ -49,8 +49,12 @@ AND address_number <=1000 -- AND address_number BETWEEN 0 and 1000
 ![like where](https://user-images.githubusercontent.com/121811651/211206075-ac8e63bd-c7c6-4311-b606-1ce7310d1e2f.png)
 
 #### SUBQUERY Operator
-The query nested in the FROM operator is the sub query. It’s enclosed in parentheses which means it’s executed independently before being passed as input into the main query. In the main query, the aggregate function COUNT has been used to COUNT the number of patients with a date of birth equalled to or greater 01 January 1995. Outside of the nested query “p” has been written to give temporarily rename the table. In the WHERE statement, a further filter has been applied based on the sub query data renamed “p” which will not include records where primary language is ‘English’. !=  translates to not equalled to and can also be written using <> function. 
+The query nested in the FROM operator is the sub query. It’s enclosed in parentheses which means it’s executed independently before being passed as input into the main query. In the main query, the aggregate function COUNT has been used to COUNT the number of patients with a date of birth equalled to or greater 01 January 1995. Outside of the nested query “p” has been written to give temporarily rename the table. In the WHERE statement, a further filter has been applied based on the sub query data renamed “p” which will not include records where primary language is ‘English’. 
+
+!=  translates to not equalled to and can also be written using <> function. 
+
 The output has been named as patient_count and returns the count of patients which have a date of birth greater than 01 January 1995 and do not have their primary language as English.
+
 This query can also be written without the use of a subquery, but to make it more readable, a sub query is an ideal way of presenting it. 
 ````sql
 SELECT COUNT (*) AS patient_count
