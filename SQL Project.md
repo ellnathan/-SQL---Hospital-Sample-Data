@@ -68,7 +68,8 @@ WHERE p.primary_language != 'English'
 ![Screenshot 2022-12-27 000100](https://user-images.githubusercontent.com/121811651/211206479-954e6ae4-0f54-4064-9bdc-984b417ea5d0.png)
 
 #### IN Operator
-Filtering on specific records within the patients table
+IN operator has been used to filter on a specific values in the ````WHERE````statement. If the values mentioned are present in the ````master_patient_id```` column, they will be return, along with all the columns from the ````patients```` table.
+
 ````sql
 SELECT * 
 FROM general_hospital.patients
@@ -78,6 +79,7 @@ WHERE master_patient_id in
 ![IN](https://user-images.githubusercontent.com/121811651/211208684-310fbaaf-e9b8-4740-b3c5-fae0331c1cde.png)
 
 ##### NOT IN
+NOT IN, does the opposite or the IN operator and will return all the county with the expection of those mentioned in the ````WHERE````statement.
 ````sql
 SELECT * 
 FROM general_hospital.patients
