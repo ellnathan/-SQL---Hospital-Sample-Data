@@ -88,7 +88,12 @@ WHERE county NOT IN ('Los Angeles', 'Dayton', 'Lafayette', 'Columbus')
 ![NOT IN](https://user-images.githubusercontent.com/121811651/211208716-b9c84861-fb5e-488d-acc7-f81dccaccf6a.png)
 
 #### CTE (Common Table Expression)
-Creating temporary tables and combining both into one output table 
+Two CTEs have been used to break up the query into more manageable pieces and improve readability of the query. The CTEs are defined as tb1 and tb2. Both CTEs select the same columns and tables but filter on 2 different criteria. 
+
+The resource_cost column is rounded to a 2 decimal place and renamed as rounded_number. 
+The column contains a mixture of both UPPER- and LOWER-case characters, so the lowercase function is used to convert all characters to a lowercase to perform a case-insensitive matching.
+
+The query results are then joined together through the UNION operator to combine the results from both CTEs, and removes any duplicates from either table before merging them into a single result set. Lastly, the table is ordered by the rounded_number in ascending order by default.
 ````sql
 WITH tb1 AS (
 		SELECT resource_name, resource_type, ROUND (resource_cost, 2) AS rounded_number
