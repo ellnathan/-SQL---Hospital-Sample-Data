@@ -155,7 +155,12 @@ WHERE lower(city) = 'bristol'
 ![Screenshot 2022-12-27 233250](https://user-images.githubusercontent.com/121811651/211221102-b93113f6-2aa4-4be6-9fa4-329362ae6672.png)
 
 ##### CTE (Common Table Expression) - Additional Example
-JOINs
+This query is selecting data from two tables in a database, surgical_encounters and patients.
+The common columns between these 2 tables are the master_patient_id column which is what the tables are joined on. 
+The query then filters the results using the WHERE clause. It filters the results to only show the surgical encounters that have a surgical admission date between '2016-11-01' and '2016-11-30' and the patients that were born on or after '1990-01-01'.
+
+It selects all columns from both tables for the rows that match these criteria. The output query returns all the surgical encounters that happened in November 2016 for patients who were born on or after 01-01-1990.
+
 ````sql
 SELECT * 
 FROM general_hospital.surgical_encounters se
