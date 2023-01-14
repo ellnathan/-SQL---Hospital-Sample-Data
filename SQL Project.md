@@ -137,13 +137,17 @@ GROUP BY pa.county
 
 
 ##### CTE (Common Table Expression) - Additional Example
-Temporary table with filters applied
+Another example of using CTE. In this query, it filters on the patient table to only show patients that were born before 01 Janary 2004, and live in Bristol. 
+This is achieved by creating a CTE called adult_patients which selects all the columns from the patients table where the date of birth is less than or equal to ‘2004-01-01’.
+
+It then selects all columns from the CTE, converts the column city to lowercase and filters on where the city is ‘bristol’. Lowercase is useful to use when the data is not consistent in terms of case.
+
 ````sql
 WITH adult_patients AS (
-					SELECT * 
-					FROM general_hospital.patients
-					WHERE date_of_birth <='2004-01-01'
-					)
+			SELECT * 
+			FROM general_hospital.patients
+			WHERE date_of_birth <='2004-01-01'
+			)
 SELECT *
 FROM adult_patients
 WHERE lower(city) = 'bristol'
