@@ -47,7 +47,7 @@ AND city = 'Philadelphia'
 AND address_number <=1000 -- AND address_number BETWEEN 0 and 1000
 ````
 ![like where](https://user-images.githubusercontent.com/121811651/211206075-ac8e63bd-c7c6-4311-b606-1ce7310d1e2f.png)
-
+___________________
 #### SUBQUERY Operator
 The query nested in the FROM operator is the sub query. It’s enclosed in parentheses which means it’s executed independently before being passed as input into the main query. In the main query, the aggregate function COUNT has been used to COUNT the number of patients with a date of birth equalled to or greater 01 January 1995. Outside of the nested query “p” has been written to give temporarily rename the table. In the WHERE statement, a further filter has been applied based on the sub query data renamed “p” which will not include records where primary language is ‘English’. 
 
@@ -66,7 +66,7 @@ FROM (
 WHERE p.primary_language != 'English' 
 ````
 ![Screenshot 2022-12-27 000100](https://user-images.githubusercontent.com/121811651/211206479-954e6ae4-0f54-4064-9bdc-984b417ea5d0.png)
-
+___________________
 #### IN Operator
 IN operator has been used to filter on a specific values in the ````WHERE````statement. If the values mentioned are present in the ````master_patient_id```` column, they will be return, along with all the columns from the ````patients```` table.
 
@@ -77,7 +77,7 @@ WHERE master_patient_id in
 (100821,100822,100823,100824,100825,100826,100827,100828,100829,100830,100831,100832,100833,100834,100835,100836)
 ````
 ![IN](https://user-images.githubusercontent.com/121811651/211208684-310fbaaf-e9b8-4740-b3c5-fae0331c1cde.png)
-
+___________________
 ##### NOT IN
 NOT IN, does the opposite of the IN operator and will return all the counties with the expection of those mentioned in the ````WHERE````statement.
 ````sql
@@ -86,7 +86,7 @@ FROM general_hospital.patients
 WHERE county NOT IN ('Los Angeles', 'Dayton', 'Lafayette', 'Columbus') 
 ````
 ![NOT IN](https://user-images.githubusercontent.com/121811651/211208716-b9c84861-fb5e-488d-acc7-f81dccaccf6a.png)
-
+___________________
 #### CTE (Common Table Expression)
 Two CTEs have been used to break up the query into more manageable pieces and improve readability of the query. The CTEs are defined as tb1 and tb2. Both CTEs select the same columns and tables but filter on 2 different criteria. 
 
@@ -110,7 +110,7 @@ SELECT * from tb2
 ORDER BY rounded_number 
 ````
 ![UNION  And not UNION ALL](https://user-images.githubusercontent.com/121811651/211220814-c63845e0-ab20-463f-a145-f1d733cbe6b0.png)
-
+___________________
 ##### CTE (Common Table Expression) - Additional Example
 Creating 2 temporary tables, joins and count 
 ````sql
@@ -134,8 +134,7 @@ ON se.master_patient_id = pa.master_patient_id
 GROUP BY pa.county
 ````
 ![Screenshot 2022-12-28 002714](https://user-images.githubusercontent.com/121811651/211221503-788d8c1b-1d82-4908-b4e3-b4b68e27b9e2.png)
-
-
+___________________
 ##### CTE (Common Table Expression) - Additional Example
 Another example of using CTE. In this query, it filters on the patient table to only show patients that were born before 01 Janary 2004, and live in Bristol. 
 This is achieved by creating a CTE called adult_patients which selects all the columns from the patients table where the date of birth is less than or equal to ‘2004-01-01’.
@@ -153,7 +152,7 @@ FROM adult_patients
 WHERE lower(city) = 'bristol'
 ````
 ![Screenshot 2022-12-27 233250](https://user-images.githubusercontent.com/121811651/211221102-b93113f6-2aa4-4be6-9fa4-329362ae6672.png)
-
+___________________
 ##### CTE (Common Table Expression) - Additional Example
 This query is selecting data from two tables in a database, surgical_encounters and patients.
 The common columns between these 2 tables are the master_patient_id column which is what the tables are joined on. 
@@ -171,7 +170,7 @@ BETWEEN '2016-11-01' AND '2016-11-30'
 AND date_of_birth >= '1990-01-01'
 ````
 ![Screenshot 2022-12-27 154937](https://user-images.githubusercontent.com/121811651/211221914-41f60449-5728-42c2-831c-93a29b9088f6.png)
-
+___________________
 ##### CTE (Common Table Expression) - Additional Example
  This query is selecting data from two tables, "patients" and "surgical_encounters".
 It first creates a CTE called "tb1" which selects the master_patient_id, surgical_type, total_cost rounded to 2 decimal places, and total_profit rounded to 2 decimal places from the "patients" and "surgical_encounters" tables. The subquery filters results where the surgical_type is 'NonElective'.
