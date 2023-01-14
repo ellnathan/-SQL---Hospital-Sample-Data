@@ -173,7 +173,11 @@ AND date_of_birth >= '1990-01-01'
 ![Screenshot 2022-12-27 154937](https://user-images.githubusercontent.com/121811651/211221914-41f60449-5728-42c2-831c-93a29b9088f6.png)
 
 ##### CTE (Common Table Expression) - Additional Example
-CTE and JOINs
+ This query is selecting data from two tables, "patients" and "surgical_encounters".
+It first creates a CTE called "tb1" which selects the master_patient_id, surgical_type, total_cost rounded to 2 decimal places, and total_profit rounded to 2 decimal places from the "patients" and "surgical_encounters" tables. The subquery filters results where the surgical_type is 'NonElective'.
+
+Then it Selects all columns from the "tb1" subquery, and an additional column is created which is called “revenue” and is a calculation sum of total_cost_rounded and total_profit_rounded.
+It then filters the results again by total_cost_rounded and total_profit_rounded where the value is equalled to or greater than ‘1000’.
 ````sql
 WITH tb1 AS (
 		SELECT pa.master_patient_id, surgical_type, round(total_cost,2) AS total_cost_rounded, round(total_profit,2) AS total_profit_rounded
