@@ -189,16 +189,3 @@ AND total_profit_rounded >= 1000
 ````
 ![Screenshot 2022-12-27 154937](https://user-images.githubusercontent.com/121811651/211221810-b1d81420-70b4-414c-9e11-1aef20aeb604.png)
 
-#### JOINs
-Inner joins to pull data from different tables
-````sql
-SELECT se.master_patient_id, surgery_id, diagnosis_description
-FROM general_hospital.surgical_encounters se
-JOIN general_hospital.patients pa
-ON se.master_patient_id = pa.master_patient_id
-WHERE surgical_admission_date BETWEEN '2016-11-01' AND '2016-11-30'
-AND date_of_birth >= '1990-01-01'
-````
-![image](https://user-images.githubusercontent.com/121811651/211222597-61600dba-5ca4-4255-aadd-7c01ab6afef1.png)
-
-
