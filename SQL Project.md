@@ -113,8 +113,10 @@ ORDER BY rounded_number
 ___________________
 ##### CTE (Common Table Expression) - Additional Example
  The query gets the number of surgeries by counties where there are more than 1700 patients. The first CTE titled “top_counties_count” selects the county and the count of patients for each county from the patients table, and filters out the results where the count of patients is less than 1700. HAVING is used instead of WHERE as the GROUP BY function is applied before the filtering.
-The second CTE creates another subquery titled “county_patients” that selects the master_patient_id and county, and then joined with the previous subquery, so that only patients from the top counties are selected. The tables are referenced as “pa” and “tc” to avoid having to rewrite the whole table name out in the join statement. 
-Lastly, the main query selects the county and count of surgeries for each county, joining the surgical_encounters table with the previous subquery so that only surgeries for patients from the top counties are selected, and groups the results by county.
+ 
+The second CTE creates another subquery titled “county_patients” selects the master_patient_id and county, and then joins with the previous subquery, so that only patients from the top counties are selected. The tables are referenced as “pa” and “tc” to avoid having to rewrite the whole table name out in the join statement.
+
+Lastly, the main query selects the county and count of surgeries (renamed as num_surgeries) for each county, joining the surgical_encounters table with the previous subquery so that only surgeries for patients from the top counties are selected, and groups the results by county.
 ````sql
 WITH top_counties_count AS (
 				SELECT
