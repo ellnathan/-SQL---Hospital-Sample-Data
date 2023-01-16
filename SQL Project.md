@@ -196,3 +196,22 @@ AND total_profit_rounded >= 1000
 ````
 ![Screenshot 2022-12-27 154937](https://user-images.githubusercontent.com/121811651/211221810-b1d81420-70b4-414c-9e11-1aef20aeb604.png)
 
+##### Window Function (RANK) 
+This window function query assigns a unique rank to each row showing a patient’s account balance by ranking the different illnesses someone has. The different illnesses are represented by diagnose code which is referenced to as the primary_icd column. The RANK function ranks the different account balances based on the primary_icd and shows the corresponding account_id.
+````sql
+SELECT
+	account_id,
+	primary_icd 
+	total_account_balance,
+	RANK()
+	      OVER (partition by primary_icd 
+		   ORDER BY total_account_balance desc) 
+	as account_rank_by_icd
+FROM general_hospital.accounts
+````
+![image](https://user-images.githubusercontent.com/121811651/212754854-adc5c1a5-b85a-495e-90ce-43d643959202.png)
+
+
+
+
+
