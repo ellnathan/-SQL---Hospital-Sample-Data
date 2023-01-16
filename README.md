@@ -1,1 +1,1 @@
-# -SQL---Hospital-Sample-Data
+# SQL-Hospital-Sample-Data
