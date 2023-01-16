@@ -21,7 +21,6 @@ FROM information_schema.columns
 ___________________
 ### SELECT DISTINCT 
 The DISTINCT statement returns unique records. In this query, the distinct operator filters on the **state** column and will eliminate any duplicate values in the list. 
-Select unique records from the **state** column
 ````sql
 SELECT DISTINCT state
 FROM general_hospital.patients
@@ -111,7 +110,7 @@ ORDER BY rounded_number
 ````
 ![UNION  And not UNION ALL](https://user-images.githubusercontent.com/121811651/211220814-c63845e0-ab20-463f-a145-f1d733cbe6b0.png)
 ___________________
-##### CTE (Common Table Expression) - Additional Example
+##### CTE (Common Table Expression) - Additional Example #2
  The query gets the number of surgeries by counties where there are more than 1700 patients. The first CTE titled “top_counties_count” selects the county and the count of patients for each county from the patients table and filters out the results where the count of patients is less than 1700. HAVING is used instead of WHERE as the GROUP BY function is applied before the filtering.
  
 The second CTE creates another subquery titled “county_patients” selects the master_patient_id and county, and then joins with the previous subquery, so that only patients from the top counties are selected. The tables are referenced as “pa” and “tc” to avoid having to rewrite the whole table name out in the join statement.
@@ -139,7 +138,7 @@ GROUP BY pa.county
 ````
 ![Screenshot 2022-12-28 002714](https://user-images.githubusercontent.com/121811651/211221503-788d8c1b-1d82-4908-b4e3-b4b68e27b9e2.png)
 ___________________
-##### CTE (Common Table Expression) - Additional Example
+##### CTE (Common Table Expression) - Additional Example #3
 Another example of using CTE. In this query, it filters on the patient table to only show patients that were born before 01 Janary 2004 and live in Bristol. 
 This is achieved by creating a CTE called adult_patients which selects all the columns from the patients table where the date of birth is less than or equal to ‘2004-01-01’.
 
@@ -158,7 +157,7 @@ WHERE lower(city) = 'bristol'
 ````
 ![Screenshot 2022-12-27 233250](https://user-images.githubusercontent.com/121811651/211221102-b93113f6-2aa4-4be6-9fa4-329362ae6672.png)
 ___________________
-##### CTE (Common Table Expression) - Additional Example
+##### CTE (Common Table Expression) - Additional Example #4
 This query is selecting data from two tables in a database, surgical_encounters and patients.
 The common columns between these 2 tables are the master_patient_id column which is what the tables are joined on. 
 The query then filters the results using the WHERE clause. It filters the results to only show the surgical encounters that have a surgical admission date between '2016-11-01' and '2016-11-30' and the patients that were born on or after '1990-01-01'.
@@ -176,7 +175,7 @@ AND date_of_birth >= '1990-01-01'
 ````
 ![Screenshot 2022-12-27 154937](https://user-images.githubusercontent.com/121811651/211221914-41f60449-5728-42c2-831c-93a29b9088f6.png)
 ___________________
-##### CTE (Common Table Expression) - Additional Example
+##### CTE (Common Table Expression) - Additional Example #5
  This query is selecting data from two tables, "patients" and "surgical_encounters".
 It first creates a CTE called "tb1" which selects the master_patient_id, surgical_type, total_cost rounded to 2 decimal places, and total_profit rounded to 2 decimal places from the "patients" and "surgical_encounters" tables. The subquery filters results where the surgical_type is 'NonElective'.
 
@@ -198,7 +197,7 @@ AND total_profit_rounded >= 1000
 ![Screenshot 2022-12-27 154937](https://user-images.githubusercontent.com/121811651/211221810-b1d81420-70b4-414c-9e11-1aef20aeb604.png)
 
 ##### Window Function (RANK) 
-This window function query assigns a unique rank to each row showing a patient’s account balance by ranking the different illnesses someone has. The different illnesses are represented by diagnose code which is referenced to as the primary_icd column. The RANK function ranks the different account balances based on the primary_icd and shows the corresponding account_id.
+This window function query assigns a unique rank to each row showing a patient’s account balance by ranking the different illnesses someone has. The different illnesses are represented by a diagnose code which is referenced to as the primary_icd column. The RANK function ranks the different account balances based on the primary_icd and shows the corresponding account_id.
 ````sql
 SELECT
 	account_id,
