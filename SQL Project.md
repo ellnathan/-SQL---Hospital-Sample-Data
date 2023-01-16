@@ -112,7 +112,7 @@ ORDER BY rounded_number
 ![UNION  And not UNION ALL](https://user-images.githubusercontent.com/121811651/211220814-c63845e0-ab20-463f-a145-f1d733cbe6b0.png)
 ___________________
 ##### CTE (Common Table Expression) - Additional Example
- The query gets the number of surgeries by counties where there are more than 1700 patients. The first CTE titled “top_counties_count” selects the county and the count of patients for each county from the patients table, and filters out the results where the count of patients is less than 1700. HAVING is used instead of WHERE as the GROUP BY function is applied before the filtering.
+ The query gets the number of surgeries by counties where there are more than 1700 patients. The first CTE titled “top_counties_count” selects the county and the count of patients for each county from the patients table and filters out the results where the count of patients is less than 1700. HAVING is used instead of WHERE as the GROUP BY function is applied before the filtering.
  
 The second CTE creates another subquery titled “county_patients” selects the master_patient_id and county, and then joins with the previous subquery, so that only patients from the top counties are selected. The tables are referenced as “pa” and “tc” to avoid having to rewrite the whole table name out in the join statement.
 
@@ -140,10 +140,11 @@ GROUP BY pa.county
 ![Screenshot 2022-12-28 002714](https://user-images.githubusercontent.com/121811651/211221503-788d8c1b-1d82-4908-b4e3-b4b68e27b9e2.png)
 ___________________
 ##### CTE (Common Table Expression) - Additional Example
-Another example of using CTE. In this query, it filters on the patient table to only show patients that were born before 01 Janary 2004, and live in Bristol. 
+Another example of using CTE. In this query, it filters on the patient table to only show patients that were born before 01 Janary 2004 and live in Bristol. 
 This is achieved by creating a CTE called adult_patients which selects all the columns from the patients table where the date of birth is less than or equal to ‘2004-01-01’.
 
 It then selects all columns from the CTE, converts the column city to lowercase and filters on where the city is ‘bristol’. Lowercase is useful to use when the data is not consistent in terms of case.
+
 
 ````sql
 WITH adult_patients AS (
