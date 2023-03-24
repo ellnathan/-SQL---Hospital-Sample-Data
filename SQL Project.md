@@ -1,5 +1,3 @@
-# Table of Content
-
 ### Entity Relationship Diagram (ERD)
 The ERD, also known as Entity Relationship Diagram, provides a holistic visual representation of the table structure and relationships, along with the different data types for columns. Before working on a set of data, it can be a useful diagram to view to provide a better understand of location of different columns, and which tables they reside in.
 
